@@ -56,3 +56,39 @@ if (bichinho === "cachorro"){
 
 
     //
+
+//Laços
+//Exercício 11
+
+/* const numeros = [11, 15, 18, 14, 12, 13, 100]
+
+let maior = -Infinity
+
+let i = 0
+while (i<numeros.length){
+    if (numeros[i] > maior){
+        maior = numeros[i]
+    }
+    i++
+} */
+
+/* const numeros = [11, 15, 18, 14, 12, 13, 100]
+
+let maior = -Infinity
+
+for (let i = 0; i < numeros.length; i++){
+    if (numeros[i] > maior){
+        maior = numeros[i]
+    }
+} */ 
+
+
+/* const numeros = [11, 15, 18, 14, 12, 13, 100]
+let maior = -Infinity
+for (let numero of numeros){
+    if(numero > maior){
+        maior = numero
+    }
+}
+ */
+console.log(`O maior número é ${maior}`)
