@@ -36,3 +36,47 @@ function receberDados(nomeDoUsuario, vacina)
  }
 
 
+
+
+
+ //a partir daqui, cóodigo da monitora Clara Meirelles
+ 
+ function calcularDias(mes) {
+    // variavel que guarda os dias que tem o mês
+    let diasNoMes
+    // condicional para ver quantos dias tem no mês
+    if (mes === 01 || mes === 03 || mes === 05 || mes === 07 || mes === 08 || mes === 10 || mes === 12) {
+        diasNoMes = 31
+    } else if (mes === 02) {
+        diasNoMes = 28
+    } else {
+        diasNoMes = 30
+    }
+    return diasNoMes
+}
+​
+function calcularTempoParaSegundaDose(nome, vacina, dia, mes) {
+    let tempo
+    // Aqui entra a condicional de nome da vacina e dias para segunda dose, que a Tay fez ontem
+    // Depois é só chamar a função de contar dias no mes pra calcular certinho
+    // exemplo com a coronavac:
+    if (vacina === "coronavac") {
+        tempo = 28
+        // Exemplo de chamada da função pra calcular dias com o mês fornecido na chamada
+        const mesDaVacina = calcularDias(mes)
+        if (tempo + dia > mesDaVacina) {
+            // no caso da coronavac, como é menos de um mês, não precisaria fazer essa chamada aqui, ela está como um exemplo de como reutilizar a função de dias
+            const mesDaSegundaDose = calcularDias(mes + 1)
+​
+            // calcular dias que faltam no mes
+            const calculoData = mesDaVacina - dia
+​
+            // data exibida como "13/11", daria pra tratar melhor trazendo o nome do mês na condicional, no lugar de números
+            const data = `${calculoData}/${mes + 1}`
+            console.log(`Olá ${nome}! A próxima dose da ${vacina} é daqui a ${tempo} dias. Compareça no posto na data ${data}.`)
+        }
+​
+    }
+}
+
+
