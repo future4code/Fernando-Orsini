@@ -1,0 +1,36 @@
+#minhaimagem{
+    width: 300px;
+    height: 300px;
+    margin: auto;
+}
+div, h2, th, td{
+    text-align: center;
+}
+
+.cordoheader{
+    background-color: aquamarine;
+    color: solid black;
+    text-align: center;
+}
+.cordotexto{
+    background-color: lightgreen;
+    
+}
+ol li{
+    background-color: aquamarine;
+}
+#contato{
+    color: blue;
+}
+.curriculo{
+    text-align: center;
+    margin: auto;
+}
+.redes{
+    margin-left: auto;
+}
+form:hover{
+    background-color: red;
+    color: white;
+    border: solid black; 
+}
