@@ -1,0 +1,11 @@
+'''function contaOcorrencias(arrayDeNumeros, numeroEscolhido) {
+  // Escreva seu código aqui
+  const arrayDeNumeros = [1, 4, 8, 2, 5, 4, 10, 1, 2, 4, 7, 5]
+  const numeroEscolhido = valor.filter((numeroEscolhido, indice, array) => {
+ console.log(pokemon.valor === numeroEscolhido)
+})
+ if(numeroEscolhido===arrayDeNumeros.length){
+   console.log(`O número ${numeroEscolhido} aparece ${arrayDeNumeros.length} vezes´)
+ }else{
+   console.log("Número não encontrado")
+ }'''

@@ -1,0 +1,10 @@
+'''function calculaPrecoTotal(quantidade) {
+
+  if(quantida>==12){
+  console.log(quantidadeDeMacas*1)
+  }else{
+  console.log(quantidade*1.3)
+  return calculaPrecoTotal()
+  }
+    
+}'''

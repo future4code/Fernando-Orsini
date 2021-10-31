@@ -1,0 +1,16 @@
+'''function calculaNota(ex, p1, p2) {
+  // Escreva seu código aqui
+   const resultadoMediaPond = ex*1+p1*2+p2*3/3
+  if(resultadoMediaPond>==9){
+    console.log("A")
+  if else(resultadoMediaPond<9 || >==7.5){
+    cosole.log("B")
+    if else(resultadoMediaPond<7.5 || ===6)
+    cosole.log("C")
+    }else{
+      cosole.log("D")
+    }
+  }
+  
+  }
+}''' 
