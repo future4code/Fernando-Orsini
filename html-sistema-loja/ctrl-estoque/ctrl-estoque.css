@@ -1,0 +1,28 @@
+h2{
+    background-color: aquamarine;
+}
+p{
+    background-color: aquamarine;
+    color: black;
+}
+td{
+    background-color: orange;
+}
+#tomatez{
+    color: green;
+}
+#batataz{
+    color: red;
+}
+#mamaoz{
+    color: chartreuse;
+}
+.agroslave{
+    color: darkblue;
+}
+.margin-padding{
+
+    border: 5px solid;
+    margin: 8pix;
+    padding: 20pix;
+}
