@@ -11,7 +11,10 @@ const Tarefa = styled.li`
   text-align: left;
   text-decoration: ${({completa}) => (completa ? 'line-through' : 'none')};
 `
+//text-decoration tem um ternário para alternar entre duas condições: 'line-trough' se verdadeiro e 'none'
+//se falso.
 
+//Tarefa é uma lista ordenada e um styled component (?)
 const InputsContainer = styled.div`
   display: grid;
   grid-auto-flow: column;
@@ -53,6 +56,7 @@ class App extends React.Component {
       texto:  
       completa: false 
     }
+
     const copiaDoEstado = [...this.state.tarefas]
 
     copiaDoEstado.push(novaTarefa)
@@ -78,7 +82,9 @@ class App extends React.Component {
           return true
       }
     })
-
+//A variável listaFiltrada usa a condicional switch case (a função dele é testar a igualdade). 
+//O this.state filtra tarefas com o parâmetro tarefa
+//que é um objeto dentro do array tarefas (?). O return do case 'pendentes' é o oposto de tarefa completa.  
     return (
       <div className="App">
         <h1>Lista de tarefas</h1>
@@ -103,6 +109,7 @@ class App extends React.Component {
                 completa={tarefa.completa}
                 onClick={() => this.selectTarefa(tarefa.id)}
               >
+                //o parâmetro do onClick é tarefa.id(?)
                 {tarefa.texto}
               </Tarefa>
             )
