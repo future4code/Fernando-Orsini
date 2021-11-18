@@ -1,87 +1,38 @@
-import React from "react";
-import axios from "axios";
-
+import React from 'react'
+import TelaCadastro from './components/TelaCadastro';
+import TelaListaUsuarios from './components/TelaListaUsuarios';
 
 export default class App extends React.Component {
-  state = {
-    usuarios: [],
-    inputValue: ""
-  };
-
-  componentDidMount() {
-    this.getUsuarios();
+  state={
+    telaAtual: "cadastro"
   }
 
-  handleInputChange = (e) => {
-    this.setState({ inputValue: e.target.value });
-  };
+  escolherTela = () => {
+    switch (this.state.telaAtual){
+      case "cadastro":
+        return <TelaCadastro irParaLista={this.irParaLista} />
+      case "lista":
+        return <TelaListaUsuarios irParaCadastro={this.irParaCadastro} />
+        default:
+          return <div>Erro! Página não encontrada</div>
+    }
+  } 
 
-  createUser = () => {
-    axios
-      .get(
-        "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/:id",
-        {
-          headers: {
-            Authorization: "fernando-taveiraorsini-carver"
-          }
-        }
-      )
-      .then((res) => {
-        this.setState({ users: res.data.result.list });
-        console.log(res.data.result.list);
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-      });
-  };
+  irParaCadastro = () => {
+    this.setState({telaAtual: "cadastro"})
+  }
 
-  getAllUsers = () => {
-    const body = {
-      name: this.state.inputValue
-    };
-    axios
-      .post(
-        " https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/:id",
-        body,
-        {
-          headers: {
-            Authorization: "fernando-taveiraorsini-carver"
-          }
-        }
-      )
-      .then((res) => {
-        this.setState({inputValue: ''})
-        this.getAllUsers()
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-      });
-  };
+  irParaLista = () => {
+    this.setState({telaAtual: "lista"})
+  }
 
-  render() {
-    const usersList = this.state.users.map((user) => (
-      <li key={user.id}>{user.name}</li>
-    ));
+  render(){
     return (
-      <div className="App">
-        <input
-          placeholder={"Nome do Usuario"}
-          value={this.state.inputValue}
-          onChange={this.handleInputChange}
-        />
-        <input
-          placeholder={"Email"}
-          value={this.state.inputValue}
-          onChange={this.handleInputChange}
-        />
-        <button onClick={this.createUser}>Criar user</button>
-        {this.state.users.length > 0 ? (
-          <ul>{usersList}</ul>
-        ) : (
-          <p></p>
-        )}
+      <div>
+        {this.escolherTela}
       </div>
     );
   }
 }
 
+ 
