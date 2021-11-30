@@ -12,13 +12,13 @@ const Post = (props) => {
 
 	const [curtido, setCurtido] = useState(false)
 
-  const [numeroCurtidas, setNumeroCurtidas] = useState(false)
+  const [numeroCurtidas, setNumeroCurtidas] = useState(0)
 
   const [comentando, setComentando] = useState(false)
 
-  const [numeroComentarios, setNumeroComentarios] = useState(false)
+  const [numeroComentarios, setNumeroComentarios] = useState(0)
 
-  const [comentarios, setComentarios] = useState(false)
+  const [comentarios, setComentarios] = useState([])
 
 
   const onClickCurtida = () => {
@@ -32,12 +32,37 @@ const Post = (props) => {
   };
 
   const onClickComentario = () => {
+    setComentando({
+      comentando: !comentando
+    })
   };
 
   const enviarComentario = (comentario) => {
+    const listaDeComentarios = [...comentarios, comentario]
+
+    setComentarios({
+      comentarios: listaDeComentarios,
+      comentando: false,
+      numeroComentarios: this.state.numeroComentarios + 1
+    })
+  }
   }
 
   const iconeCurtida = curtido ? (iconeCoracaoPreto) : (iconeCoracaoBranco)
+
+  const caixaDeComentario = comentando ? (
+    
+    <SecaoComentario enviarComentario={enviarComentario}/>
+  ) : (
+    
+    comentarios.map(comentario => {
+      return (
+        <CommentContainer>
+          <p>{comentario}</p>
+        </CommentContainer>
+      )
+    })
+  )
 
   return (
     <PostContainer>
