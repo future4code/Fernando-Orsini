@@ -8,11 +8,11 @@ const IconeContainer = styled.div`
 		margin-right: 5px;
 	}
 `
-const iconeCurtida = curtido ? (iconeCoracaoPreto) : (iconeCoracaoBranco)
+
 function IconeComContador(props) {
 	return <IconeContainer>
 		<img alt={'Icone'} src={props.icone} onClick={props.onClickIcone}/>
-		<p>{ iconeCurtida.this.props.valorContador}</p>
+		<p>{props.valorContador}</p>
 	</IconeContainer>
 }
 

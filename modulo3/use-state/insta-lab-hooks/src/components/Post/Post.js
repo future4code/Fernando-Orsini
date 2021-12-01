@@ -14,7 +14,7 @@ const Post = (props) => {
 
   const [numeroCurtidas, setNumeroCurtidas] = useState(0)
 
-  const [comentando, setComentando] = useState(false)
+  const [enviarComentarios, setEnviarComentarios] = useState(false)
 
   const [numeroComentarios, setNumeroComentarios] = useState(0)
 
@@ -23,72 +23,64 @@ const Post = (props) => {
 
   const onClickCurtida = () => {
     if (curtido) {
-      setCurtido(!curtido)
-      setNumeroCurtidas(numeroCurtidas - 1)
+      setCurtido(false)
+      setNumeroCurtidas(0)
     } else {
-      setCurtido(!curtido)
-      setNumeroCurtidas(numeroCurtidas + 1)
+      setCurtido(true)
+      setNumeroCurtidas(1)
     }
   };
 
   const onClickComentario = () => {
-    setComentando({
-      comentando: !comentando
-    })
+    setEnviarComentarios(!enviarComentarios)
   };
 
   const enviarComentario = (comentario) => {
-    const listaDeComentarios = [...comentarios, comentario]
-
-    setComentarios({
-      comentarios: listaDeComentarios,
-      comentando: false,
-      numeroComentarios: this.state.numeroComentarios + 1
-    })
-  }
-  }
+    setNumeroComentarios(numeroComentarios + 1);
+    const novaListaDeComentarios = [...comentarios, comentario];
+    setEnviarComentarios(false);
+    setComentarios(novaListaDeComentarios);
+  };
 
   const iconeCurtida = curtido ? (iconeCoracaoPreto) : (iconeCoracaoBranco)
 
-  const caixaDeComentario = comentando ? (
-    
-    <SecaoComentario enviarComentario={enviarComentario}/>
+  const SecaoComentario = enviarComentarios ? (
+    <SecaoComentario enviarComentarios={enviarComentarios} />
   ) : (
-    
-    comentarios.map(comentario => {
+    comentarios.map((comentario) => {
       return (
         <CommentContainer>
           <p>{comentario}</p>
         </CommentContainer>
-      )
+      );
     })
-  )
+  );
 
   return (
     <PostContainer>
       <PostHeader>
-        <UserPhoto src={props.fotoUsuario} alt={'Imagem do usuario'}/>
+        <UserPhoto src={props.fotoUsuario} alt={"Imagem do usuario"} />
         <p>{props.nomeUsuario}</p>
       </PostHeader>
 
-      <PostPhoto src={props.fotoPost} alt={'Imagem do post'}/>
+      <PostPhoto src={props.fotoPost} alt={"Imagem do post"} />
 
       <PostFooter>
         <IconeComContador
-          // icone={iconeCurtida}
+          icone={iconeCurtida}
           onClickIcone={onClickCurtida}
-          // valorContador={numeroCurtidas}
+          valorContador={numeroCurtidas}
         />
 
         <IconeComContador
           icone={iconeComentario}
           onClickIcone={onClickComentario}
-          // valorContador={numeroComentarios}
+          valorContador={numeroComentarios}
         />
       </PostFooter>
-      {/* {caixaDeComentario} */}
+      {SecaoComentario}
     </PostContainer>
-  )
-}
+  );
+};
 
-export default Post
+export default Post;
