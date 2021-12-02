@@ -5,22 +5,27 @@ import PokeCard from "./components/PokeCard/PokeCard";
 import React, { useState, useEffect } from "react";
 
 const App = () => {
-const [pokeList, pokeName ]
-getPokemons = (props) => {
-      axios.get("https://pokeapi.co/api/v2/pokemon/?limit=151")
-  }
-    useEffect(() => {
-        getPokemons()
-    }, [])
-    return()
-}
+const [pokeList, setPokeList] = useState([]);
+const [pokeName, setPokeName] = useState("");
+
+
+useEffect(() => {
+  axios
+  .get("https://pokeapi.co/api/v2/pokemon/?limit=151")
+  .then(() => {
+    setPokeList(res.data.results);
+  })
+  .catch(() => {
+    console.log(err);
+  })
+}, []);
 
     return (
       <div>
-        <select onChange={this.changePokeName}>
+        <select onChange={changePokeName}>
           <option value={""}>Nenhum</option>
-          {/* renderizando a lista de pokemons como opções do select */}
-          {this.state.pokeList.map(pokemon => {
+          
+          {pokeList.map((pokemon => {
             return (
               <option key={pokemon.name} value={pokemon.name}>
                 {pokemon.name}
@@ -28,9 +33,8 @@ getPokemons = (props) => {
             );
           })}
         </select>
-        {/* expressão booleana que renderiza o componente PokeCard,
-        caso o valor de pokeName, no estado, seja true */}
-        {this.state.pokeName && <PokeCard pokemon={this.state.pokeName} />}
+       
+        {pokeName && <PokeCard pokemon={pokeName} />}
       </div>
     );
   }
