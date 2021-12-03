@@ -4,8 +4,12 @@ import TelaInicial from './componentes/TelaInicial';
 import TelaMatches from './componentes/TelaMatches';
 
 
-const App = () => {
-  const [currentScreen, setNextScreen] = useState("");
+function App() {
+  const [TelaInicial, setTelaInicial] = useState(true);
+
+  const mudarTela = () => {
+    setTelaInicial(!TelaInicial) 
+  }
 
  
 
@@ -17,23 +21,16 @@ const App = () => {
     this.setState({currentScreen: "Tela Inicial", nextScreen: ""})
   }
 
-  selectPage = () => {
-    switch (this.state.currentScreen) {
-      case "Tela Inicial":
-      return <TelaInicial goToTelaMatches={this.goToTelaMatches}/>
-      case "Tela Matches":
-        return <TelaMatches  goToTelaInicial={this.goToTelaInicial} url={this.state.nextScreen} />
-      default:
-        return <TelaInicial goToTelaMatches={this.goToTelaMatches}/> 
-    }
-    
-  }
+  
 
   return (
     <div>
       <header>
-      {this.selectPage()}
+      <button onClick={mudarTela}> Mudar página </button>
       </header>
+      <TelaInicial/>
+      <TelaMatches/>
+
     </div>
   );
 }

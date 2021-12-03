@@ -1,38 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {BASE_URL} from './url'
 
-export default class TelaMatches extends React.Component {
-    state = {
-        matches: []
-    } 
-    componentDidMount(){
-        this.getMatches()
-    }
-    
+function TelaMatches(props) {
+    const [matches, setMatches] = useState(true);
 
-    getMatches = () => {
+   const getMatches = () => {
         axios.get(`${BASE_URL/matches}`)
-        .then((res) => this.setState({matches: res.data.results}))
-        .catch((err) => console.log(err.response))
-    }
+        .then((res) => {  
+        setMatches(res.data.results)
+//Quando era um componente de classe a sintaxe acima era com ({matches:res.data.results}), um objeto (?) 
+//e o resto do código era a manipulação dele(?).
+//Agora foi substituido por setMatches, parte do UseState.  
+        .catch((err) => {
+            console.log(err.response)
+    })
 
-    
-    
-    render() {
+}
 
-        const matches = this.state.matches.map((match) => {
-            return <p key={match.id} >{match}</p>
-        })
+useEffect(() => {
+   getMatches()
+ })
+ return (
+    {
+            <div> 
+            matches.map(match) => {
+                return (
+                    <>
+                    <h1></h1>
+                    <img></img>
+                    </>
+                )
 
-        console.log(this.state.matches)
-
-        return (
-            <div> {matches} 
+            }
            <button> Dar match</button>
            <button>Pular perfil</button> 
             </div>
-          );
-    }
+        )
     
+    }
+        
   }
+
+  export default TelaMatches;
