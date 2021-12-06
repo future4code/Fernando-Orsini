@@ -1,58 +1,94 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import {BASE_URL} from './url'
+import TelaMatches from "./TelaMatches";
 
-export default class TelaInicial extends React.Component { 
-    state = {
-        profileToChoose: [],
-        choosePerson: false
-    }
-    componentDidMount(){
-        this.getProfileToChoose()
-    }
-    
+export default function TelaInicial() { 
+    const [telaInicial, setTelaInicial] = useState(true);
+    const [perfil, setPerfil] = useState({})
+    const [proximoPerfil, setProximoPerfil] = useState(0)
+    const [like, setLike] = useState(false) 
+    const [carregando, setCarregando] = useState("")
 
-    getProfileToChoose = () => {
-        axios.get(`${BASE_URL/person}`)
-        .then((res) => this.setState({profileToChoose: res.data.results}))
-        .catch((err) => console.log(err.response))
-    }
+    const mudarTela = () => {
+        setTelaInicial(!TelaInicial) 
+      }
 
-    //provavelmente é outro ciclo de vida o Post choosePerson
-    componentDidMount(){
-        this.postChoosePerson()
-    }
-    
-
-    postChoosePerson = () => {
-        axios.post(`${BASE_URL/choose-person}`)
-        .then((res) => this.setState({choosePerson: res.data.results}))
-        .catch((err) => console.log(err.response))
+    const getProfileToChoose = () => {
+        setCarregando("Carregando")
+        axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:aluno/person")
+        .then((resposta) => {
+        const novoPerfil = resposta.data.profile
+        setPerfil(novoPerfil)    
+        setCarregando("Carregou")
+    }) 
+        .catch((err) => {
+        console.log(err.response)
+        setCarregando("Deu ruim!")
+        }) 
     }
 
+    useEffect(() => {
+        getProfileToChoose()
+    }, [proximoPerfil])
 
-    
-    
-    render() {
+    const novoPerfil = () => {
+        setProximoPerfil(proximoPerfil +1)
+    }
+   
+    const curtirPerfil = (like) => {
+        setLike(like)
+        proximoPerfil()
+    }
 
-        const profilesList = this.state.profilesList.map((profile) => {
-            return <p key={profile.id} >{profile}</p>
+    const postChoosePerson = () => {
+        const body = {
+            id: perfil.id,
+            choice: like
+        }
+        console.log(body)
+        axios.post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:aluno/choose-person")
+        .then((res) => {
+            console.log(res)
+            if (res.data.isMatch){
+            window.alert("Você tem um novo match!")
+            }
+        }) 
+        .catch((err) => {
+        console.log(err.response)
         })
-
-        console.log(this.state.profileList)
+    }
 
         return (
-            <div> 
-                <header>
-                <button> Seus Matches</button>
-                </header>
-               <span> {profileToChoose} </span>
-             
-           <button> Dar match</button>
-           <button>Pular perfil</button> 
-            </div>
-          );
-    }
+            <div>
+                {
+                    telaInicial ?
+                    <div> {
+                        carregando === "Carregando" ?
+                        <h1>Carregando</h1>
+                        :
+                <>
+                    {
+                        perfil.id ?
+                        <>
+                        <p>{perfil.name} </p>
+                        <button onClick={() => curtirPerfil(true)}>Like</button>
+                        <button onClick={() => curtirPerfil(false)}>Dislike</button>
+                        </>
+                        :
+                        <p>Não tem nenhum perfil disponível</p>
+                    }
+                        
+                </>
+                }
+                <button onClick={novoPerfil}>Próximo</button> 
+                   </div>
+            :
+            <TelaMatches perfil={perfil}/>
+        }
+        <button onClick={mudarTela}>Mudar tela</button>
+          </div>
+          
+);
     
-  }
+}
 
