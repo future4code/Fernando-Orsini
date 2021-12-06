@@ -18,19 +18,7 @@ export default function TelaMatches(props){
     })
    return (
       <div>
-       {
-         matches.map((match) => {
-           return (
-           <>
-           <h1>{match.name}</h1>
-           <img src={match.photo}></img>
-           </>
-           )       
-          })
-       }
-       <p>Não tem nenhum match ainda</p>
-       <h1>{props.perfil.nome} </h1>
-       <p>{props.perfil.age}</p>
+       {getMatches}
        </div>
      );            
     } 
