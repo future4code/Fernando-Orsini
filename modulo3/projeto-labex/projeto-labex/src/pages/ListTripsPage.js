@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react"
-import URL_BASE from "./url";
+import URL_BASE from "../constants/url";
 import { useHistory } from "react-router-dom";
-import { useRequestData } from "./useRequestData";
+import { useRequestData } from "../Hooks/useRequestData";
 
 export default function ListTripPage() {
   const [trips, loadingTrips, errorTrips] = useResquestData(
     `${URL_BASE}/:aluno/trips`
   );
+//GET
   const [applyToTrips, applyingToTrips, errorApply] = useResquestData(
     `${URL_BASE}/:aluno/trips/:id/apply`
   );
+  //POST
   const history = useHistory()
  
   const goBack = () => {
-    history.goBack("");
+    history.goBack("/");
   };
 
   const tripsList =

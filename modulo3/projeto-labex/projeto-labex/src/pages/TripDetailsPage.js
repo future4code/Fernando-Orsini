@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
-import URL_BASE from "./url"
+import URL_BASE from "../constants/url";
 import { useHistory } from "react-router-dom";
-import { useRequestData } from "./useRequestData";
+import { useRequestData } from "../Hooks/useRequestData";
 export default function TripDetailPage() {
   const [trips, loadingTrips, errorTrips] = useResquestData(
     `${URL_BASE}:aluno/trip/:id`
@@ -9,7 +9,7 @@ export default function TripDetailPage() {
   const history = useHistory()
 
   const goBack = () => {
-    history.goBack("");
+    history.goBack("/adminHomePage");
   };
     return (
       <div>

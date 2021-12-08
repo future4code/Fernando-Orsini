@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react"
-import URL_BASE from "./url";
+import URL_BASE from "../constants/url";
 import { useHistory } from "react-router-dom";
-import { useRequestData } from "./useRequestData";
+import { useRequestData } from "../Hooks/useRequestData";
 
 export default function ApplicationFormPage() {
   const history = useHistory()  
-
+//POST
+//https://us-central1-labenu-apis.cloudfunctions.net/labeX/:aluno/trips/:id/apply
   const goBack = () => {
-    history.goBack("");
+    history.goBack("listTripPage");
   };
     return (
       <div>
