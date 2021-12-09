@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
-import URL_BASE from "../constants/url";
 import { useHistory } from "react-router-dom";
-import { useRequestData } from "../useRequestDataHooks";
+
 
 export default function AdminHomePage() {
   const history = useHistory() 

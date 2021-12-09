@@ -8,7 +8,7 @@ export default function ApplicationFormPage() {
 //POST
 //https://us-central1-labenu-apis.cloudfunctions.net/labeX/:aluno/trips/:id/apply
   const goBack = () => {
-    history.goBack("listTripPage");
+    history.goBack("/listTripPage");
   };
     return (
       <div>

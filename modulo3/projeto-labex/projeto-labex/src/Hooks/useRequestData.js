@@ -2,7 +2,7 @@ import URL_BASE from "./url"
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-export default const useResquestData = (url) => {
+ const useResquestData = (url) => {
   const [data, setData] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -24,3 +24,5 @@ export default const useResquestData = (url) => {
 
   return [data, isLoading, error];
 };
+
+export default useResquestData
