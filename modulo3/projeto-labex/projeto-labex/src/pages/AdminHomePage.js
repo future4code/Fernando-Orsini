@@ -1,23 +1,30 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { useHistory } from "react-router-dom";
+import useProtectedPage from "../Hooks/useProtectedPage";
 
 
-export default function AdminHomePage() {
+ const AdminHomePage = () => {
+   useProtectedPage()
   const history = useHistory() 
+
+  const goToCreateTripPagee = () => {
+    history.push("/createTripPage");
+  };
+
 
   const goBack = () => {
     history.goBack("/");
   };
-
-  //DEL. endpoint pra deletar uma trip 
-  //https://us-central1-labenu-apis.cloudfunctions.net/labeX/:aluno/trips/:id
+    
     return (
       <div>
         <header>Painel administrativo</header>
         <button onClick={goBack}>Voltar</button>
-        <button>Criar viagem</button>
+        <button onClick={goToCreateTripPagee}>Criar viagem</button>
         <button>Logout</button>
        
       </div>
     );
   }
+  
+  export default AdminHomePage

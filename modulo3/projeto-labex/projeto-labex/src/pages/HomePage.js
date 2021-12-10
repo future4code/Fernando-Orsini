@@ -1,19 +1,25 @@
-import React, { useState, useEffect } from "react"
-import URL_BASE from "../constants/url";
+import React from "react"
 import { useHistory } from "react-router-dom";
-import { useRequestData } from "../Hooks/useRequestData";
-export default function HomePage() {
+
+
+const HomePage = () => {
   const history = useHistory()
 
   const goToAdminHomePage = () => {
     history.push("/adminHomePage");
   };
+
+  const goToListTripPage = () => {
+    history.push("/listTripPage");
+  };
   
     return (
       <div>
         <header>Labex</header>
-        <button onClick={goBack}>Voltar</button>
+        <button onClick={goToListTripPage}>Viagens disponíveis</button>
         <button onClick={goToAdminHomePage}>Área Admin</button>
       </div>
     );
   }
+
+  export default HomePage

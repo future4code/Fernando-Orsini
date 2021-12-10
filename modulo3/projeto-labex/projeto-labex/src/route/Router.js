@@ -3,12 +3,13 @@ import AdminHomePage from "../pages/AdminHomePage";
 import ApplicationFormPage from "../pages/ApplicationFormPage";
 import CreateTripePage from "../pages/CreateTripPage";
 import { ErrorPage } from "../pages/ErrorPage";
+import HomePage from "../pages/HomePage";
 import ListTripPage from "../pages/ListTripsPage";
 import LoginPage from "../pages/LoginPage";
 import TripDetailPage from "../pages/TripDetailsPage";
 
 
-export const Router = () => {
+const Router = () => {
   return (
     <BrowserRouter>
       <Switch>
@@ -47,3 +48,5 @@ export const Router = () => {
     </BrowserRouter>
   );
 };
+
+export default Router

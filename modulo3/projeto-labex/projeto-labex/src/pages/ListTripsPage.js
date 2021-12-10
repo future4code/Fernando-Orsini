@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import URL_BASE from "../constants/url";
 import { useHistory } from "react-router-dom";
-import { useRequestData } from "../Hooks/useRequestData";
+import useResquestData from "../Hooks/useRequestData";
 
-export default function ListTripPage() {
+
+const ListTripPage = () => {
   const [trips, loadingTrips, errorTrips] = useResquestData(
-    `${URL_BASE}/:aluno/trips`
-  );
-//GET
-  const [applyToTrips, applyingToTrips, errorApply] = useResquestData(
-    `${URL_BASE}/:aluno/trips/:id/apply`
-  );
-  //POST
+`${URL_BASE}/:fernando-orsini-carver/trips`);
+
+  
+  
   const history = useHistory()
+
+  const goToApplicationPage = () => {
+    history.push("/applicationPage");
+  };
  
   const goBack = () => {
     history.goBack("/");
@@ -30,14 +32,17 @@ export default function ListTripPage() {
       <h1>Lista de viagens</h1>
       {/*loadingTrips = true */}
       {loadingTrips && <p>Carregando...</p>}
+      {trips}
       {/*loadingTrips = false , mas colocando "!" ele fica true */}
       {!loadingTrips && errorTrips && <p>Ocorreu um erro...</p>}
       {!loadingTrips && trips && trips.length === 0 && (
         <p>Não há viagens disponíveis</p>
       )}
     
-        <header onClick={goBack}>Voltar</header>
-        <button onClick={}>Inscrever-se</button>
+        <button onClick={goBack}>Voltar</button>
+        <button onClick={goToApplicationPage}>Inscrever-se</button>
     </div>
   );
 }
+
+export default ListTripPage

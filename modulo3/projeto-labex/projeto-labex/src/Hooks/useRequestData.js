@@ -1,4 +1,3 @@
-import URL_BASE from "./url"
 import axios from "axios";
 import { useState, useEffect } from "react";
 
