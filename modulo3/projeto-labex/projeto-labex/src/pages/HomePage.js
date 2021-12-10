@@ -5,8 +5,8 @@ import { useHistory } from "react-router-dom";
 const HomePage = () => {
   const history = useHistory()
 
-  const goToAdminHomePage = () => {
-    history.push("/adminHomePage");
+  const goToLoginPage = () => {
+    history.push("/loginPage");
   };
 
   const goToListTripPage = () => {
@@ -17,7 +17,7 @@ const HomePage = () => {
       <div>
         <header>Labex</header>
         <button onClick={goToListTripPage}>Viagens disponíveis</button>
-        <button onClick={goToAdminHomePage}>Área Admin</button>
+        <button onClick={goToLoginPage}>Área Admin</button>
       </div>
     );
   }

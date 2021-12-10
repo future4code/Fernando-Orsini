@@ -19,7 +19,7 @@ const ApplicationFormPage = () =>{
   };
 
   const [applyToTrips, applyingToTrips, errorApply] = useResquestData(
-    `${URL_BASE}/:fernando-orsini-carver/trips/:id/apply`);
+    `${URL_BASE}/fernando-orsini-carver/trips/:id/apply`);
   
   const history = useHistory()  
 

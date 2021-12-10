@@ -6,7 +6,7 @@ import useResquestData from "../Hooks/useRequestData";
 
 const ListTripPage = () => {
   const [trips, loadingTrips, errorTrips] = useResquestData(
-`${URL_BASE}/:fernando-orsini-carver/trips`);
+`${URL_BASE}/fernando-orsini-carver/trips`);
 
   
   

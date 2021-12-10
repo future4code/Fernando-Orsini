@@ -7,14 +7,14 @@ import useProtectedPage from "../Hooks/useProtectedPage";
 const TripDetailPage = () => {
   useProtectedPage()
 
-  const useHistory = useHistory()
+  const history = useHistory()
 
   const goToAdminHomePage = () => {
     history.push("/adminHomePage");
   };
     useEffect(() => {
       const token = localStorage.getItem('token')
-    axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labeX/:fernando-orsini-carver/trip/:id',
+    axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labeX/fernando-orsini-carver/trip/:id',
     {
     headers: {
       auth: token

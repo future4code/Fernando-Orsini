@@ -8,7 +8,7 @@ import useResquestData from "../Hooks/useRequestData";
 const CreateTripePage  = () =>{
   useProtectedPage()
   const [createTrip, loadingCreateTrip, errorCreateTrip] = useResquestData(
-    `${URL_BASE}/:fernando-orsini-carver/trips`
+    `${URL_BASE}/fernando-orsini-carver/trips`
   );
   
   const history = useHistory()

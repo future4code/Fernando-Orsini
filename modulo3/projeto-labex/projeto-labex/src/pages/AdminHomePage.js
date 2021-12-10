@@ -15,13 +15,13 @@ import useProtectedPage from "../Hooks/useProtectedPage";
   const goBack = () => {
     history.goBack("/");
   };
-    
+
     return (
       <div>
         <header>Painel administrativo</header>
         <button onClick={goBack}>Voltar</button>
         <button onClick={goToCreateTripPagee}>Criar viagem</button>
-        <button>Logout</button>
+        <button onClick={localStorage.removeItem('token')}>Logout</button>
        
       </div>
     );
