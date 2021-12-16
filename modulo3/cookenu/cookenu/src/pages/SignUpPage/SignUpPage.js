@@ -1,10 +1,18 @@
 import React from 'react';
+import { LogoImage, ScreenContainer } from './styled';
+import SignUpForm from './SignUpForm';
+import { useHistory } from 'react-router-dom';
+import cookenu from '../../assets/cookenu.jpg'
+import useUnprotectedPage from '../../hooks/useUnprotectedPage';
 
 const SignUpPage = () => {
+    useUnprotectedPage()
+    const history = useHistory()
     return (
-        <div> 
-    <h1>SignUpPage</h1>
-        </div>
+        <ScreenContainer>
+            <LogoImage src={cookenu}/>
+            <SignUpForm/>
+        </ScreenContainer>
     )
 }
 

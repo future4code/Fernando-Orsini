@@ -1,20 +1,17 @@
 import React from 'react';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import AddRecipesPage from '../pages/AddRecipesPage/AddRecipesPage';
 import LoginPage from '../pages/LoginPage/LoginPage';
 import RecipesDetailPage from '../pages/RecipesDetailPage/RecipesDetailPage';
 import RecipesListPage from '../pages/RecipesListPage/RecipesListPage'
 import SignUpPage from '../pages/SignUpPage/SignUpPage';
 import ErrorPage from '../pages/ErrorPage/ErroPage';
-import Header from '../components/Header/Header';
 
-const Router = () => {
+const Router = ({rightButtonText, setRightButtonText}) => {
     return (
-       <BrowserRouter>
-       <Header/>
        <Switch>
            <Route exact path="/login">
-            <LoginPage/>
+            <LoginPage rightButtonText={rightButtonText} setRightButtonText={setRightButtonText}/>
            </Route>
            <Route exact path="/cadastro">
                <SignUpPage/>
@@ -32,7 +29,6 @@ const Router = () => {
               <ErrorPage/>
            </Route>
        </Switch>
-       </BrowserRouter>
     )
 }
 
