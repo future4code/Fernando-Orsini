@@ -5,13 +5,13 @@ import { useHistory } from 'react-router-dom';
 import cookenu from '../../assets/cookenu.jpg'
 import useUnprotectedPage from '../../hooks/useUnprotectedPage';
 
-const SignUpPage = () => {
+const SignUpPage = ({setRightButtonText}) => {
     useUnprotectedPage()
     const history = useHistory()
     return (
         <ScreenContainer>
             <LogoImage src={cookenu}/>
-            <SignUpForm/>
+            <SignUpForm setRightButtonText={setRightButtonText}/>
         </ScreenContainer>
     )
 }

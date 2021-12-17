@@ -7,13 +7,13 @@ import { goToSignUp } from '../../routes/coordinator';
 import cookenu from '../../assets/cookenu.jpg'
 import useUnprotectedPage from '../../hooks/useUnprotectedPage';
 
-const LoginPage = ({rightButtonText, setRightButtonText}) => {
+const LoginPage = ({setRightButtonText}) => {
     useUnprotectedPage()
     const history = useHistory()
     return (
         <ScreenContainer>
             <img src={cookenu}/> 
-            <LoginForm rightButtonText={rightButtonText} setRightButtonText={setRightButtonText}/>
+            <LoginForm setRightButtonText={setRightButtonText}/>
         <SignUpBottomContainer>
         <Button onClick={() => goToSignUp(history)}
             fullWidth

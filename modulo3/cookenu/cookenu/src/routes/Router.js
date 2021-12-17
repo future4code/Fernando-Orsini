@@ -7,14 +7,14 @@ import RecipesListPage from '../pages/RecipesListPage/RecipesListPage'
 import SignUpPage from '../pages/SignUpPage/SignUpPage';
 import ErrorPage from '../pages/ErrorPage/ErroPage';
 
-const Router = ({rightButtonText, setRightButtonText}) => {
+const Router = ({setRightButtonText}) => {
     return (
        <Switch>
            <Route exact path="/login">
-            <LoginPage rightButtonText={rightButtonText} setRightButtonText={setRightButtonText}/>
+            <LoginPage setRightButtonText={setRightButtonText}/>
            </Route>
            <Route exact path="/cadastro">
-               <SignUpPage/>
+               <SignUpPage setRightButtonText={setRightButtonText}/>
            </Route>
            <Route exact path="/">
                <RecipesListPage/>

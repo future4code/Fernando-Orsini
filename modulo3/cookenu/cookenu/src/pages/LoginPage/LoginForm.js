@@ -5,7 +5,7 @@ import useForm from '../../hooks/useForm';
 import {login} from '../../services/user';
 import { useHistory } from 'react-router-dom'
 
-const LoginForm = ({rightButtonText, setRightButtonText}) => {
+const LoginForm = ({setRightButtonText}) => {
     const [form, onChange, clear ] = useForm({email: "", password:""})
     const history = useHistory()
 
