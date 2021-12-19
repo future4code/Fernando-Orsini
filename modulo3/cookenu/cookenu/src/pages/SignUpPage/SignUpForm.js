@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SignUpBottomContainer } from './styled' 
-import { Button, TextField } from '@material-ui/core';
+import { Button, CircularProgress, TextField } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
 import {signUp} from '../../services/user'
@@ -8,10 +8,11 @@ import {signUp} from '../../services/user'
 const  SignUpForm = ({setRightButtonText}) => {
     const history = useHistory()
     const [form, onChange, clear ]= useForm({name:"",email: "", password:""})
+    const [isLoading, setIsLoading] = useState(false)
 
     const onSubmitForm = (event) => {
         event.preventDefault()
-        signUp(form, clear, history, setRightButtonText) 
+        signUp(form, clear, history, setRightButtonText, setIsLoading) 
 
     }
     return (
@@ -56,7 +57,7 @@ const  SignUpForm = ({setRightButtonText}) => {
             color={"primary"}
             margin={"normal"}
             type={"submit"}
-            >Fazer cadastro</Button>
+            >{isLoading ? <CircularProgress color={"inherit"} size={24}/> : <>Fazer cadastro</>}</Button>
         </form>
         </SignUpBottomContainer>
         

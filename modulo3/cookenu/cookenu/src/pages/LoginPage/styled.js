@@ -31,7 +31,7 @@ width: 80vw;
 max-width: 450vw;
 `
 
-export const LogoImage = styled.div`
+export const LogoImage = styled.img`
 width: 80vw;
 max-width: 80vw;
 `
