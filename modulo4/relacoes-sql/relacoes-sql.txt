@@ -1,0 +1,44 @@
+Exercício 1
+
+a) Explique o que é uma chave estrangeira
+É um jeito de referenciar ou relacionar uma tabela à outra. A foreign key se relaciona com a primary key da parent table.
+
+b) Crie a tabela e, ao menos, uma avaliação para cada um dos filmes
+
+INSERT INTO Rating (id, comment, rate, movie_id) 
+VALUES (
+		"001",
+    "Muito bom!",
+    7,
+		"004"
+);
+
+
+c) Tente criar uma avaliação para um filme que não existe (ou seja, um id inválido). Anote e explique o resultado da query.
+Error Code: 1064. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO Rating (id, comment, rate, movie_id)  VALUES (   "005",     "Muito b' at line 9
+
+
+d) Altere a tabela de filmes para que ela não tenha mais uma coluna chamada rating.
+ALTER TABLE Movie DROP COLUMN rating;
+
+e) Tente apagar um filme que possua avaliações. Anote e explique o resultado da query.
+
+Exercício 2
+
+a) Explique, com as suas palavras, essa tabela
+Está tentando criar relações entre as tabelas Movie e Actor usando a foreign key.
+
+b) Crie, ao menos, 6 relações nessa tabela 
+Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails (`carver-fernando-taveira-orsini`.`MovieCast`, CONSTRAINT `MovieCast_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `Movie` (`id`))
+
+
+c) Tente criar uma relação com um filme ou um ator inexistente. Anote e explique o resultado da query
+
+d) Tente apagar um ator que possua uma relação nessa tabela. Anote e explique o resultado da query
+
+
+Exercício 3
+
+a) Explique, com suas palavras, a query acima. O que é o operador ON?
+
+b) Escreva uma query que retorne somente o nome, id e nota de avaliação dos filmes que já foram avaliados.
