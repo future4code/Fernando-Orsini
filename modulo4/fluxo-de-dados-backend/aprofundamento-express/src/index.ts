@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express"
 import cors from "cors"
-import { users } from "./data"
+import { Product, products, users } from "./data"
 
 const app = express()
 
@@ -179,4 +179,69 @@ app.delete("/track", (req: Request, res: Response) => {
 
 app.get("/test", (req, res) => {
   res.send("API online!")
+})
+
+
+//Exercício 3 r 7
+
+app.post("/products", (req: Request, res: Response) => {
+  try {
+    const name = req.body.name
+    const price = req.body.price
+
+    if (!name || !price) {
+      throw new Error("Um ou mais campos faltando: 'name', 'price'")
+    }
+
+    if (typeof name !== "string") {
+      throw new Error("O campo 'name' deve ser uma string")
+    }
+    if (typeof price !== "number"|| price <= ) {
+      throw new Error("O campo 'price' deve ser um number e maior que zero")
+    }
+
+    const newProduct: Product = {
+      id: Date.now().toString(),
+      name,
+      price
+    }
+
+    products.push(newProduct)
+
+    res.send(products)
+
+  } catch (error: any) {
+    switch (error.message) {
+      case "Um ou mais campos faltando: 'name', 'price'":
+        res.status(422)
+        break
+        case "O campo 'name' deve ser uma string":
+          res.status(422)
+          break
+          case "O campo 'price' deve ser um number maior que zero":
+        res.status(422)
+        break
+      default:
+        res.status(500)
+    }
+
+    res.send(error.message || "Erro inesperado")  
+  }
+})
+
+
+//Exercício 4
+app.get("/products", (req: Request, res: Response) => {
+  try {
+    res.send(products)
+
+  } catch(error: any) {
+    res.send(error.message || "Erro inesperado")
+  }
+})
+
+// Exercício 5 e 8
+
+app.put("/products/:id", (req: Request, res: Response) => {
+  try 
 })
