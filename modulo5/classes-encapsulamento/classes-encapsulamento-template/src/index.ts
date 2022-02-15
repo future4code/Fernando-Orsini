@@ -1,3 +1,23 @@
+//Exercício 1
+
+//a) Para que serve o construtor dentro de uma classe e como fazemos para chamá-lo?
+//Serve para inicializar variáveis.
+
+//b) Copie o código abaixo para o seu exercício de hoje; crie uma instância dessa classe (dê o nome, cpf e idade que você quiser). 
+//Quantas vezes a mensagem "Chamando o construtor da classe User" foi impressa no terminal?
+
+//c) Como conseguimos ter acesso às propriedades privadas de uma classe?
+//Através de Getters e Setters.
+
+//Exercício 2
+//Transforme a variável de tipo abaixo, chamada Transaction em uma classe Transaction. Ela deve conter as mesmas propriedades: data, valor e descrição.
+// Agora, porém, todas elas devem ser privadas. Portanto, crie métodos (getters) para a leitura desses valores, tanto para essa classe quanto para a classe UserAccount.
+// Crie uma instância dessa classe e adicione à instância já criada de UserAccount
+
+//Exercício 3
+//Crie uma classe Bank, que será responsável por guardar todos os dados da aplicação. 
+//Ela deve possuir a propriedades accounts, privada (crie os getters e setters que achar apropriado).
+
 class Transaction {
     private description: string;
     private value: number;
