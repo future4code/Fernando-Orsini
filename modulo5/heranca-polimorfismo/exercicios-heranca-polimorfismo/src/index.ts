@@ -35,6 +35,10 @@ export const connection = knex({
 
 console.log("Hello, world!")
 
+//****NÃO CONSEGIO ACOMPANHAR AS AULAS E NÃO TIVE NENNUM APROVEITAMENTO NAS ATIVIDADES
+//PRECISO REVER DESDE A AULA ANTERIOR E RELER ESSE CONTEÚDO.#########
+
+
 //Herança
 
 
